@@ -1,6 +1,7 @@
 package operatørAdministration;
+import exception.DALException;
 
-public class IOperatoerDAO 
+public interface IOperatoerDAO 
 {
 	OperatoerDTO getOperatoer(int oprId) throws DALException;
 	List<OperatoerDTO> getOperatoerList() throws DALException;
