@@ -7,3 +7,4 @@ public class DALException extends Exception {
 		super ("Der skete en fejl");
 	}
 }
+// test commit
