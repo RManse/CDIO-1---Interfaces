@@ -16,7 +16,7 @@ public class Brugergraenseflade
 		boolean running = true;
 		while(running)
 		{
-			System.out.println("Hej, velkommen. Er du admin eller bruger? \n1. Admin\n2. Bruger\nSkriv 'Exit' hvis de ønsker at logge ud.");
+			System.out.println("1. Log in som admin\n2. Opret bruger\n3. Print operatører ud\n4. Ændre dit password\n'Exit' for at afslutte");
 			java.util.Scanner skanner = new java.util.Scanner(System.in);
 			String user = skanner.nextLine();
 			switch (user)
@@ -37,8 +37,32 @@ public class Brugergraenseflade
 			}
 			break;	
 				
-				
 			case "2":
+				
+				System.out.println("Indtast navn");
+				String oprNavn = skanner.nextLine();
+				System.out.println("Indtast initialer");
+				String ini = skanner.nextLine();
+				System.out.println("Indtast cpr-nummer");
+				String cpr = skanner.nextLine();
+				System.out.println("indtast ønskede password");
+				String passwordNewOpr = skanner.nextLine();
+				
+				try {
+					o.createOperatoer(oprNavn, ini, cpr, passwordNewOpr);
+				} catch (DALException e) {
+					e.printStackTrace();
+				}
+				
+				break;
+				
+			case "3":
+				try {
+					d.getOperatoerList();
+				} catch (DALException e) {
+					e.printStackTrace();
+				}
+			case "4":
 				System.out.println("Velkommen Bruger. Her kan du ændre dit password \nIndtast bruger ID:");
 				String brugerID = skanner.nextLine();
 				System.out.println("Indtast dit gamle password:");
@@ -51,32 +75,11 @@ public class Brugergraenseflade
 			{
 				System.out.println("Tillykke, dit nye password er nu ændret til"+newPassword);
 			}
-			break;	
-				
-			case "3":
-				
-				String oprNavn = skanner.nextLine();
-				String ini = skanner.nextLine();
-				String cpr = skanner.nextLine();
-				String passwordNewOpr = skanner.nextLine();
-				
-				try {
-					o.createOperatoer(oprNavn, ini, cpr, passwordNewOpr);
-				} catch (DALException e) {
-					e.printStackTrace();
-				}
-				
-				break;
-				
-			case "4":
-				try {
-					d.getOperatoerList();
-				} catch (DALException e) {
-					e.printStackTrace();
-				}
+			break;
 				
 			
 			}
+			
 			
 			if (user.equals("Exit"))
 			{

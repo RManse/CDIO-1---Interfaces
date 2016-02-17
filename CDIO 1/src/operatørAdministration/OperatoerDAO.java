@@ -17,7 +17,7 @@ public class OperatoerDAO implements IOperatoerDAO {
 
 	@Override
 	public List<OperatoerDTO> getOperatoerList() throws DALException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -29,13 +29,13 @@ public class OperatoerDAO implements IOperatoerDAO {
 
 	@Override
 	public void updateOperatoer(OperatoerDTO opr) throws DALException {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void deleteOperatoer(OperatoerDTO opr) throws DALException {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
