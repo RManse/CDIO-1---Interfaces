@@ -27,7 +27,7 @@ public class Data implements IData
 		}
 		
 		public String toString() {
-			String s = "Brugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+"\n";
+			String s = "\nBrugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Password: "+password;
 			return s;
 		}
 		
