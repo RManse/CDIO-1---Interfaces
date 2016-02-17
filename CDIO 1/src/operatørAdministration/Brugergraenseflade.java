@@ -34,9 +34,12 @@ public class Brugergraenseflade
 				System.out.println("Brugernavn eller password er forkert.");
 			}
 			break;	
-				
-				
+			
+			
 			case "2":
+				
+				
+			case "3":
 				System.out.println("Velkommen Bruger. Her kan du ændre dit password \nIndtast bruger ID:");
 				String brugerID = skanner.nextLine();
 				System.out.println("Indtast dit gamle password:");
