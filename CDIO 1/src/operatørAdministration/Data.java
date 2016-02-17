@@ -51,6 +51,15 @@ public class Data implements IData
 			return myList;
 		}
 		
+		@Override
+		public void updateOperatoer(OperatoerDTO opr) 
+		{
+//			password =
+			
+			
+		}
+		
+		
 }
 
 
