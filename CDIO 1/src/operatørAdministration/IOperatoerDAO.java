@@ -11,4 +11,6 @@ public interface IOperatoerDAO
 	void deleteOperatoer(Data.OperatoerDTO opr) throws DALException;
 }
 
+//test 
+
 
