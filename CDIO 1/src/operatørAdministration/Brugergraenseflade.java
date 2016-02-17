@@ -1,9 +1,11 @@
 package operatørAdministration;
 
+import exception.DALException;
 
 public class Brugergraenseflade 
 {
 	private IOperatoerDAO o = new OperatoerDAO();
+	private IData d = new Data();
 	
 	public static void main(String[] args) 
 	{
@@ -34,12 +36,9 @@ public class Brugergraenseflade
 				System.out.println("Brugernavn eller password er forkert.");
 			}
 			break;	
-			
-			
+				
+				
 			case "2":
-				
-				
-			case "3":
 				System.out.println("Velkommen Bruger. Her kan du ændre dit password \nIndtast bruger ID:");
 				String brugerID = skanner.nextLine();
 				System.out.println("Indtast dit gamle password:");
@@ -54,11 +53,32 @@ public class Brugergraenseflade
 			}
 			break;	
 				
+			case "3":
+				
+				String oprNavn = skanner.nextLine();
+				String ini = skanner.nextLine();
+				String cpr = skanner.nextLine();
+				String passwordNewOpr = skanner.nextLine();
+				
+				try {
+					o.createOperatoer(oprNavn, ini, cpr, passwordNewOpr);
+				} catch (DALException e) {
+					e.printStackTrace();
+				}
+				
+				break;
+				
+			case "4":
+				try {
+					d.getOperatoerList();
+				} catch (DALException e) {
+					e.printStackTrace();
+				}
 				
 			
 			}
 			
-			if (user.equals("Exit")||user.equals("exit"))
+			if (user.equals("Exit"))
 			{
 				running = false;
 			}

@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.DALException;
+//import operatørAdministration.Data.OperatoerDTO;
 
 public class Data implements IData
 {
-	
+	int i = 10; 
 	public class OperatoerDTO {
 		int    oprID;   	//Operatør ID                     
 		String oprNavn;     //Operatør navn
 		String ini;         //Wat        
 		String cpr;         //Operatør CPR        
 		String password;    //Operatør password, skal autogenereres
+		
+		private String getName() {
+			return oprNavn;
+		}
 		
 		private OperatoerDTO(int oprID, String oprNavn, String ini, String cpr, String password) {
 			super();
@@ -27,17 +32,31 @@ public class Data implements IData
 		List<OperatoerDTO> myList;
 		
 		public Data() {
-		myList = new ArrayList<OperatoerDTO>();
-		        // Tilføj personer
-			myList.add(new OperatoerDTO(12, "hej", "hej", "hej", "hej"));
+			myList = new ArrayList<OperatoerDTO>();
+			myList.add(new OperatoerDTO(10, "sysadmin", "sysad", "111111-1111", "Abc02324"));
+			
 
 		}
-	
+
+//		public void createOperatoer(OperatoerDTO opr) throws DALException {
+		@Override
+		public void createOperatoer(String oprNavn, String ini, String cpr, String password) throws DALException {
+			i++;
+			myList.add(new OperatoerDTO(i, oprNavn, ini, cpr, password));
+
+		}
+
+		@Override
+		public List<OperatoerDTO> getOperatoerList() throws DALException {
+			for (int i=10; i<=myList.size(); i++)
+				System.out.println(myList.get(i).getName());
+			return null;
+
+		}
+}
 
 
-@Override
-public String getNavn(String cpr) throws DALException {
-	// TODO Auto-generated method stub
-	return null;
-}
-}
+
+
+
+

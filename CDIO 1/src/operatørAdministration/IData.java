@@ -1,6 +1,10 @@
 package operatørAdministration;
+import java.util.List;
+
 import exception.DALException;
+//import operatørAdministration.Data.OperatoerDTO;
 
 public interface IData {
-	public String getNavn(String cpr) throws DALException;
+	void createOperatoer(String oprNavn, String ini, String cpr, String password) throws DALException;
+	List<Data.OperatoerDTO> getOperatoerList() throws DALException;
 }
