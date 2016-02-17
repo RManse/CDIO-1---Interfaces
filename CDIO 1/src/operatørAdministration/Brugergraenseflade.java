@@ -58,10 +58,11 @@ public class Brugergraenseflade
 				
 			case "3":
 				try {
-					d.getOperatoerList();
+					System.out.println(o.getOperatoerList().toString());
 				} catch (DALException e) {
 					e.printStackTrace();
 				}
+				break;
 			case "4":
 				System.out.println("Velkommen Bruger. Her kan du ændre dit password \nIndtast bruger ID:");
 				String brugerID = skanner.nextLine();
