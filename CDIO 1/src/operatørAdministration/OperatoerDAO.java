@@ -30,13 +30,15 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 
 	@Override
-	public void updateOperatoer(OperatoerDTO opr) throws DALException {
-		
+	public void updateOperatoer(String changePassword) throws DALException
+	{
 		
 	}
+	
 
 	@Override
-	public void deleteOperatoer(OperatoerDTO opr) throws DALException {
+	public void deleteOperatoer(OperatoerDTO opr) throws DALException 
+	{
 		
 		
 	}

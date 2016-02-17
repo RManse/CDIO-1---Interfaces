@@ -16,7 +16,7 @@ public class Brugergraenseflade
 		boolean running = true;
 		while(running)
 		{
-			System.out.println("1. Log in som admin\n2. Opret bruger\n3. Print operatører ud\n4. Ændre dit password\n'Exit' for at afslutte");
+			System.out.println("1. Log in som admin\n2. Opret bruger\n3. Print operatører ud\n4. Ændre dit password\n5. Slet en operatør\n'Exit' for at afslutte");
 			java.util.Scanner skanner = new java.util.Scanner(System.in);
 			String user = skanner.nextLine();
 			switch (user)
@@ -74,9 +74,14 @@ public class Brugergraenseflade
 				String newPassword2 = skanner.nextLine();
 			if (newPassword.equals(newPassword2))
 			{
+//				o.updateOperatoer(changePassword);
 				System.out.println("Tillykke, dit nye password er nu ændret til"+newPassword);
 			}
 			break;
+			
+			case "5":
+				
+			
 				
 			
 			}

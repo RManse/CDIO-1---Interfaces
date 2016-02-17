@@ -28,6 +28,10 @@ public class Data implements IData
 			String s = "\nBrugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Initialer: "+ini+", Password: "+password;
 			return s;
 		}
+		public String getPassword()
+		{
+			return this.password;
+		}
 		
 	}
 		List<OperatoerDTO> myList;
@@ -50,14 +54,10 @@ public class Data implements IData
 		}
 		
 		@Override
-		public void updateOperatoer(OperatoerDTO opr) 
+		public void updateOperatoer(String changePassword) 
 		{
-//			password =
-			
 			
 		}
-		
-		
 }
 
 

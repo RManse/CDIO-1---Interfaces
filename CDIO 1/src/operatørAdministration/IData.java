@@ -7,5 +7,5 @@ import operatørAdministration.Data.OperatoerDTO;
 public interface IData {
 	void createOperatoer(String oprNavn, String ini, String cpr, String password) throws DALException;
 	List<Data.OperatoerDTO> getOperatoerList() throws DALException;
-	void updateOperatoer(OperatoerDTO opr);
+	void updateOperatoer(String changePassword);
 }
