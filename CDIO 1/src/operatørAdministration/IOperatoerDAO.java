@@ -8,3 +8,6 @@ public class IOperatoerDAO
 	void updateOperatoer(OperatoerDTO opr) throws DALException;
 	void deleteOperatoer(OperatoerDTO opr) throws DALException;
 }
+
+//Hej mcfggt, virker det?
+
