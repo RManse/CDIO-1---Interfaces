@@ -55,7 +55,7 @@ public class Brugergraenseflade
 			
 			}
 			
-			if (user.equals("Exit"))
+			if (user.equals("Exit")||user.equals("exit"))
 			{
 				running = false;
 			}
