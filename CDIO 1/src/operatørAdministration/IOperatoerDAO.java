@@ -10,5 +10,4 @@ public interface IOperatoerDAO
 	void deleteOperatoer(OperatoerDTO opr) throws DALException;
 }
 
-//Hej mcfggt, virker det?
 
