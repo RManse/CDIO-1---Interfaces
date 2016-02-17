@@ -25,6 +25,12 @@ public class Data implements IData
 			this.cpr = cpr;
 			this.password = password;
 		}
+		
+		public String toString() {
+			String s = "Brugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+"\n";
+			return s;
+		}
+		
 	}
 		List<OperatoerDTO> myList;
 		
@@ -43,9 +49,6 @@ public class Data implements IData
 		@Override
 		public List<OperatoerDTO> getOperatoerList() throws DALException {
 			return myList;
-			
-
-
 		}
 		
 }
