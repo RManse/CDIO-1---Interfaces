@@ -1,9 +1,12 @@
 package operatørAdministration;
-
+import java.util.*;
 import exception.DALException;
 
 public class OperatoerDAO implements IOperatoerDAO {
-
+	
+	
+	
+	
 	@Override
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {
 		// TODO Auto-generated method stub

@@ -1,4 +1,6 @@
 package operatørAdministration;
+import java.util.*;
+
 import exception.DALException;
 
 public interface IOperatoerDAO 

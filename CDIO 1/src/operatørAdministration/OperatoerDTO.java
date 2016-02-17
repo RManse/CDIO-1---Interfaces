@@ -1,5 +1,8 @@
 package operatørAdministration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OperatoerDTO {
 	int    oprID;   	//Operatør ID                     
 	String oprNavn;     //Operatør navn
@@ -15,6 +18,11 @@ public class OperatoerDTO {
 		this.cpr = cpr;
 		this.password = password;
 	}
+	
+	List<OperatoerDTO> myList = new ArrayList<OperatoerDTO>();
+	
+	
+	
 	
 }
 	// I skal selv færdiggøre klasseerklæringen og -definitionen med setter- og getter metoder.
