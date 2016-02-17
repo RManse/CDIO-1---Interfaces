@@ -1,8 +1,6 @@
 package operatørAdministration;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 import exception.DALException;
 //import operatørAdministration.Data.OperatoerDTO;
 
@@ -27,7 +25,7 @@ public class Data implements IData
 		}
 		
 		public String toString() {
-			String s = "\nBrugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Password: "+password;
+			String s = "\nBrugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Initialer: "+ini+", Password: "+password;
 			return s;
 		}
 		
@@ -36,7 +34,7 @@ public class Data implements IData
 		
 		public Data() {
 			myList = new ArrayList<OperatoerDTO>();
-			myList.add(new OperatoerDTO(10, "sysadmin", "sysad", "111111-1111", "Abc02324"));
+			myList.add(new OperatoerDTO(10, "sysadmin", "sysadm", "111111-1111", "Abc02324"));
 		}
 
 		@Override
