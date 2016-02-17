@@ -33,7 +33,7 @@ public class Brugergraenseflade
 			{
 				System.out.println("Brugernavn eller password er forkert.");
 			}
-				
+			break;	
 				
 				
 			case "2":
@@ -49,7 +49,7 @@ public class Brugergraenseflade
 			{
 				System.out.println("Tillykke, dit nye password er nu ændret til"+newPassword);
 			}
-				
+			break;	
 				
 				
 			
