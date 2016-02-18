@@ -8,7 +8,7 @@ public interface IOperatoerDAO
 	List<Data.OperatoerDTO> getOperatoerList() throws DALException;
 	void createOperatoer(String oprNavn, String ini, String cpr, String password) throws DALException;
 	void updateOperatoer(String changePassword) throws DALException;
-	void deleteOperatoer(Data.OperatoerDTO opr) throws DALException;
+	void deleteOperatoer(int oprID) throws DALException;
 }
 
 

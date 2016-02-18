@@ -80,10 +80,28 @@ public class Brugergraenseflade
 			break;
 			
 			case "5":
+				System.out.println("Hvilken operatør vil du slette?");
+				try {
+					System.out.println(o.getOperatoerList().toString());
+				} catch (DALException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int slet = skanner.nextInt();
+				try {
+					o.deleteOperatoer(slet);
+				} catch (DALException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println("Du har blah"+slet);
+				try {
+					System.out.println(o.getOperatoerList().toString());
+				} catch (DALException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-			
-				
-			
 			}
 			
 			

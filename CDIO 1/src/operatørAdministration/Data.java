@@ -6,7 +6,7 @@ import exception.DALException;
 
 public class Data implements IData
 {
-	int i = 10;
+	int BrugerI = 10;
 	public class OperatoerDTO {
 		int    oprID;   	//Operatør ID                     
 		String oprNavn;     //Operatør navn
@@ -43,9 +43,9 @@ public class Data implements IData
 
 		@Override
 		public void createOperatoer(String oprNavn, String ini, String cpr, String password) throws DALException {
-			i++;
-			myList.add(new OperatoerDTO(i, oprNavn, ini, cpr, password));
-
+			BrugerI++;
+			myList.add(new OperatoerDTO(BrugerI, oprNavn, ini, cpr, password));
+			System.out.println(myList.size());
 		}
 
 		@Override
@@ -56,6 +56,24 @@ public class Data implements IData
 		@Override
 		public void updateOperatoer(String changePassword) 
 		{
+			
+		}
+
+		@Override
+		public void deleteOperatoer(int oprID) {
+			int found = -1;
+			for(int i=0; i<myList.size(); i++){
+				if (myList.get(i).oprID == oprID){
+					found = i;
+				}
+			}
+			myList.remove(found);
+//			try {
+//				slet = 0;
+//			} catch (DALException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 		}
 }

@@ -27,8 +27,6 @@ public class OperatoerDAO implements IOperatoerDAO {
 	}
 	
 
-	
-
 	@Override
 	public void updateOperatoer(String changePassword) throws DALException
 	{
@@ -37,10 +35,9 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 
 	@Override
-	public void deleteOperatoer(OperatoerDTO opr) throws DALException 
+	public void deleteOperatoer(int oprID) throws DALException 
 	{
-		
-		
+		d.deleteOperatoer(oprID);
 	}
 
 	
