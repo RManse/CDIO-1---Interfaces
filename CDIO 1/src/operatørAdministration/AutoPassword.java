@@ -27,9 +27,9 @@ public class AutoPassword {
 	    		password[i] = (char) (randomizer.nextInt(26) + 'A');
 	    	else if (k==2 || k==6)
 	    		password[i] = (char) (randomizer.nextInt(26) + 'a');
-	    	else if (k==3 || k==7)
+	    	else if (k==3 || k==7 || k==4)
 	    		password[i] = (char) (randomizer.nextInt(10) + '0');
-	    	else if (k==4) {
+	    	else if (k==8) {
 	    		int p = (int) ((Math.random()*7));
 	    		password[i] = (char) tegnArray[p];
 	    	}

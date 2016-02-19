@@ -1,12 +1,12 @@
 package operatørAdministration;
 
 import java.util.*;
+
 import exception.DALException;
-//import operatørAdministration.Data.OperatoerDTO;
 
 public class Data implements IData
 {
-	int BrugerI = 10;
+	int brugerI = 10;
 	public class OperatoerDTO {
 		int    oprID;   	//Operatør ID                     
 		String oprNavn;     //Operatør navn
@@ -28,10 +28,7 @@ public class Data implements IData
 			String s = "\nBrugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Initialer: "+ini+", Password: "+password+"   ";
 			return s;
 		}
-		public String getPassword()
-		{
-			return this.password;
-		}
+		
 		
 	}
 		List<OperatoerDTO> myList;
@@ -43,9 +40,9 @@ public class Data implements IData
 
 		@Override
 		public void createOperatoer(String oprNavn, String ini, String cpr) throws DALException {
-			BrugerI++;
-			myList.add(new OperatoerDTO(BrugerI, oprNavn, ini, cpr, AutoPassword.newPassword()));
-			System.out.println(myList.size());
+			brugerI++;
+			myList.add(new OperatoerDTO(brugerI, oprNavn, ini, cpr, AutoPassword.newPassword()));
+//			System.out.println(myList.size());
 		}
 
 		@Override
@@ -54,13 +51,13 @@ public class Data implements IData
 		}
 		
 		@Override
-		public void updateOperatoer(String changePassword) 
-		{
+		public void updateOperatoer(String changePassword) {
 			
 		}
 
 		@Override
-		public void deleteOperatoer(int oprID) {
+		public void deleteOperatoer(int oprID) throws DALException {
+			try {
 			int found = -1;
 			for(int i=0; i<myList.size(); i++){
 				if (myList.get(i).oprID == oprID){
@@ -68,20 +65,52 @@ public class Data implements IData
 				}
 			}
 			myList.remove(found);
-//			try {
-//				slet = 0;
-//			} catch (DALException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			} catch (IndexOutOfBoundsException e) {
+				throw new DALException();
+			}
 			
 		}
 
 		@Override
 		public OperatoerDTO getOperatoer(int oprId) throws DALException {
-			// TODO Auto-generated method stub
+			try {
+			for (int i=0; i<myList.size(); i++)
+				if (myList.get(i).oprID == oprId)
+					return myList.get(i);
 			return null;
+			} catch (IndexOutOfBoundsException e) {
+				throw new DALException();
+		 	}
 		}
+		
+		@Override
+		public String getPassword(int oprID) {// throws DALException{
+//			try {
+				for (int i=0; i<myList.size(); i++) {
+					if (myList.get(i).oprID == oprID)
+						return myList.get(i).password;
+				}
+				return null;
+//				} catch (IndexOutOfBoundsException e) {
+//					throw new DALException();
+//			 	}
+		}
+		
+		@Override
+		public boolean oprIDexist(int oprID) { //throws DALException {
+//			try {
+				for (int i=0; i<myList.size(); i++)
+					if (myList.get(i).oprID == oprID)
+						return true;
+				return false;
+//				} catch (IndexOutOfBoundsException e) {
+//					throw new DALException();
+//			 	}
+		}
+		
+		
+		
+		
 }
 
 

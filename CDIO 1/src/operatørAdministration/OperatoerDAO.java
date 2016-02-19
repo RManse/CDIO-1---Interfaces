@@ -12,8 +12,7 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 	@Override
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {
-
-		return null;
+		return d.getOperatoer(oprId);
 	}
 
 	@Override
