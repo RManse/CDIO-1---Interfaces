@@ -76,6 +76,12 @@ public class Data implements IData
 //			}
 			
 		}
+
+		@Override
+		public OperatoerDTO getOperatoer(int oprId) throws DALException {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }
 
 
