@@ -25,7 +25,7 @@ public class Data implements IData
 		}
 		
 		public String toString() {
-			String s = "\nBrugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Initialer: "+ini+", Password: "+password;
+			String s = "\nBrugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Initialer: "+ini+", Password: "+password+"   ";
 			return s;
 		}
 		public String getPassword()
@@ -42,9 +42,9 @@ public class Data implements IData
 		}
 
 		@Override
-		public void createOperatoer(String oprNavn, String ini, String cpr, String password) throws DALException {
+		public void createOperatoer(String oprNavn, String ini, String cpr) throws DALException {
 			BrugerI++;
-			myList.add(new OperatoerDTO(BrugerI, oprNavn, ini, cpr, password));
+			myList.add(new OperatoerDTO(BrugerI, oprNavn, ini, cpr, AutoPassword.newPassword()));
 			System.out.println(myList.size());
 		}
 

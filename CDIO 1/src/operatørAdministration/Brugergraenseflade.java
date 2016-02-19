@@ -40,11 +40,9 @@ public class Brugergraenseflade
 					String ini = skanner.nextLine();
 					System.out.println("Indtast cpr-nummer");
 					String cpr = skanner.nextLine();
-					System.out.println("indtast ønskede password");
-					String passwordNewOpr = skanner.nextLine();
 					
 					try {
-						o.createOperatoer(oprNavn, ini, cpr, passwordNewOpr);
+						o.createOperatoer(oprNavn, ini, cpr);
 					} catch (DALException e) {
 						e.printStackTrace();
 					}

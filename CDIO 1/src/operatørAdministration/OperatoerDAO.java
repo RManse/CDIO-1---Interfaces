@@ -22,8 +22,8 @@ public class OperatoerDAO implements IOperatoerDAO {
 	}
 
 	@Override
-	public void createOperatoer(String oprNavn, String ini, String cpr, String password) throws DALException {
-		d.createOperatoer(oprNavn, ini, cpr, password);
+	public void createOperatoer(String oprNavn, String ini, String cpr) throws DALException {
+		d.createOperatoer(oprNavn, ini, cpr);
 	}
 	
 
