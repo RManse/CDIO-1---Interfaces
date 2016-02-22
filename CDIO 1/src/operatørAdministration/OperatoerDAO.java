@@ -7,32 +7,40 @@ public class OperatoerDAO implements IOperatoerDAO {
 	Data d = new Data();
 	
 	@Override
-	public operatørAdministration.OperatoerDTO getOperatoer(int oprId) throws DALException {
-		// TODO Auto-generated method stub
+	public OperatoerDTO getOperatoer(int oprId) throws DALException {
+		for (int i=0; i<d.getMyList().size(); i++)
+			if (d.getMyList().get(i).oprID == oprId) {
+				OperatoerDTO opr = d.getMyList().get(i);
+				return opr;
+			}
 		return null;
 	}
 
 	@Override
-	public List<operatørAdministration.OperatoerDTO> getOperatoerList() throws DALException {
+	public List<OperatoerDTO> getOperatoerList() throws DALException {
 		return d.getMyList();
 	}
 
 	@Override
-	public void createOperatoer(operatørAdministration.OperatoerDTO opr) throws DALException {
+	public void createOperatoer(OperatoerDTO opr) throws DALException {
+		d.getMyList().add(opr);
+	}
+
+	@Override
+	public void updateOperatoer(OperatoerDTO opr) throws DALException {
+		OperatoerDTO opr1 = getOperatoer(opr.getOprID());
+		deleteOperatoer(opr1);
 		d.getMyList().add(opr);
 		
+//		for (int i=0; i<d.getMyList().size(); i++)
+//			if (d.getMyList().get(i).oprID == oprId) {
+//				OperatoerDTO opr = d.getMyList().get(i);
+//			}
 	}
 
 	@Override
-	public void updateOperatoer(operatørAdministration.OperatoerDTO opr) throws DALException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteOperatoer(operatørAdministration.OperatoerDTO opr) throws DALException {
-		// TODO Auto-generated method stub
-		
+	public void deleteOperatoer(OperatoerDTO opr) throws DALException {
+		d.getMyList().remove(opr);
 	}
 	
 	

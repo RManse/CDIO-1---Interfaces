@@ -6,8 +6,6 @@ import exception.DALException;
 
 public class Data //implements IData
 {
-	int brugerI = 10;
-	
 		private List<OperatoerDTO> myList;
 		
 		public Data() {
@@ -22,7 +20,7 @@ public class Data //implements IData
 		public void setMyList(List<OperatoerDTO> myList) {
 			this.myList = myList;
 		}
-		
+
 
 //		@Override
 //		public void createOperatoer(String oprNavn, String ini, String cpr) throws DALException {
