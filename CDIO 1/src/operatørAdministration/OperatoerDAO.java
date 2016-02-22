@@ -9,7 +9,7 @@ public class OperatoerDAO implements IOperatoerDAO {
 	@Override
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {
 		for (int i=0; i<d.getMyList().size(); i++)
-			if (d.getMyList().get(i).oprID == oprId) {
+			if (d.getMyList().get(i).getOprID() == oprId) {
 				OperatoerDTO opr = d.getMyList().get(i);
 				return opr;
 			}

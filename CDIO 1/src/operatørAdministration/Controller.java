@@ -7,6 +7,7 @@ public class Controller {
 	OperatoerDAO o = new OperatoerDAO();
 	AutoPassword ap = new AutoPassword();
 	Brugerflade b = new Brugerflade();
+	Data d = new Data();
 	
 	public static void main(String args[]) throws DALException {
 		new Controller();
@@ -17,9 +18,16 @@ public class Controller {
 		boolean running = true;
 		while (running) {
 			
+			boolean loggetInd = false;
+					
+			if (d.getMyList().get(indexFraID(b.menu())).getPassword().equals(autoriser()))
+				loggetInd = true;
+
+				
+			while (loggetInd)
 			//Menu
 			
-			switch (b.menu()) {
+			switch (b.adminMenu()) {
 				case 1:
 					opretOperator();
 					break;
@@ -38,11 +46,38 @@ public class Controller {
 				case 6:
 					updateOperatoer();
 					break;
+				case 7:
+					loggetInd = false;
 				default:
 					break;
 			}
+			
+			
+
 		}
 		
+	}
+	
+	public int indexFraID(int oprId) throws DALException {
+		//Den virker kun for sysadmin, den kan ikke finde andre en plads 0
+		//try catch med ArrayIndexOutOfBounds virker ikke
+		
+		//Følgende linje afslører at størrelsen på listen ikke øges
+		System.out.println("Størrelse: "+d.getMyList().size());
+		//Selv når en ekstra tilføjes operatør, er "size" stadig = 1
+		
+		for (int i=0; i<d.getMyList().size(); i++) 
+			if (d.getMyList().get(i).getOprID() == oprId) {
+				System.out.println("Indexet er: "+i); //Blot en test
+				return i;
+			}
+		//Følgende skal helst fjernes, eller aldrig forekomme:
+		System.out.println("Bruger ikke fundet, venligst log ind som sysadmin, eller tryk enter for at prøve igen");
+		return 0;
+	}
+	
+	public String autoriser() throws DALException {
+		return b.password();
 	}
 	
 	public void updateOperatoer() throws DALException {

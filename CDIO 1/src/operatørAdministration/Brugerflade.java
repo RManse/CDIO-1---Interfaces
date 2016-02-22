@@ -5,12 +5,13 @@ import exception.DALException;
 public class Brugerflade {
 
 	java.util.Scanner skanner = new java.util.Scanner(System.in);
+	Data d = new Data();
 	
 
 	
 	public int menu() throws DALException {
 		try {
-			System.out.println("Velkommen, tryk 1 for at oprette operatør, 2 for at printe listen");
+			System.out.println("Velkommen, indtast dit ID for at logge ind");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			return a;
@@ -21,10 +22,17 @@ public class Brugerflade {
 	}
 	
 	public int adminMenu() {
-		System.out.println("Velkommen admin\n1. Opret operatør");
-		String s = skanner.nextLine();
-		int a = Integer.parseInt(s);
-		return a;
+		try {
+			System.out.println("Velkommen "+d.getMyList().get(0).getOprNavn()+","
+					+ "\ntryk 1 for at oprette operatør,"
+					+ "2 for at printe listen");
+			String s = skanner.nextLine();
+			int a = Integer.parseInt(s);
+			return a;
+		} catch (NumberFormatException e) {
+			System.out.println("Fejl, kun tal understøttes, prøv igen");
+		}
+		return adminMenu();
 	}
 	
 	public int operatorMenu() {
@@ -58,6 +66,11 @@ public class Brugerflade {
 	
 	public String cpr() {
 		System.out.println("Indtast CPR: ");
+		return skanner.nextLine();
+	}
+	
+	public String password() {
+		System.out.println("Indtast password: ");
 		return skanner.nextLine();
 	}
 	
