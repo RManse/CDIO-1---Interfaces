@@ -6,11 +6,10 @@ public class AutoPassword {
 	
 ////Til test:
 //	public static void main(String args[]) {
-//		
 //	    System.out.println(newPassword());
 //	}
     
-	public static String newPassword() {
+	public String newPassword() {
 		Random randomizer = new Random();
 	    
 	    int[] tegnArray = new int[7];

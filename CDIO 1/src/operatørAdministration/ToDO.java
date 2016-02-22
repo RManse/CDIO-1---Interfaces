@@ -19,3 +19,4 @@ public class ToDO {
 //Da skal programmet bede om "tara vægt i kg", herefter "brutto i kg", og den udskriver så:
 //brutto=netto+tara, altså skal vi udskrive netto=brutto-tara
 
+//brugergrænseflade skal blot være en printout menu der ændre sig alt efter hvilken admin der er logget ind
