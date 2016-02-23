@@ -2,8 +2,6 @@ package operatørAdministration;
 
 import java.util.*;
 
-import exception.DALException;
-
 public class Data //implements IData
 {
 		private List<OperatoerDTO> myList;

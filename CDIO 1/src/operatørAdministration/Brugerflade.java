@@ -5,7 +5,17 @@ import exception.DALException;
 public class Brugerflade {
 
 	java.util.Scanner skanner = new java.util.Scanner(System.in);
-	Data d = new Data();
+//	Data d = new Data();
+//	
+//	public Brugerflade(Data d) {
+//		this.d = d;
+//	}
+	
+	Data d;
+	
+	public Brugerflade(Data d) {
+		this.d = d;
+	}
 	
 
 	
@@ -21,9 +31,9 @@ public class Brugerflade {
 		return menu();
 	}
 	
-	public int adminMenu() {
+	public int adminMenu(int oprIndex) {
 		try {
-			System.out.println("Velkommen "+d.getMyList().get(0).getOprNavn()+","
+			System.out.println("\nVelkommen "+d.getMyList().get(oprIndex).getOprNavn()+","
 					+ "\ntryk 1 for at oprette operatør,"
 					+ "2 for at printe listen");
 			String s = skanner.nextLine();
@@ -32,7 +42,7 @@ public class Brugerflade {
 		} catch (NumberFormatException e) {
 			System.out.println("Fejl, kun tal understøttes, prøv igen");
 		}
-		return adminMenu();
+		return adminMenu(oprIndex);
 	}
 	
 	public int operatorMenu() {
@@ -79,10 +89,45 @@ public class Brugerflade {
 			System.out.println("Indtast admin status: \n1. System admin\n2. Operatør");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
-			return a;
+			if (a == 1 || a == 2)
+				return a;
+			else
+				return adminStatus();
 		} catch (NumberFormatException e) {
 			System.out.println("Fejl, kun tal understøttes, prøv igen");
 		}
 		return adminStatus();
 	}
+	
+	public double tara() {
+		try {
+			System.out.println("Indtast tara vægt kg");
+			String s = skanner.nextLine();
+			int a = Integer.parseInt(s);
+				return a;
+		} catch (NumberFormatException e) {
+			System.out.println("Fejl, kun tal understøttes, prøv igen");
+		}
+		return tara();
+	}
+	
+	public double brutto() {
+		try {
+			System.out.println("Indtast brutto vægt kg");
+			String s = skanner.nextLine();
+			int a = Integer.parseInt(s);
+				return a;
+		} catch (NumberFormatException e) {
+			System.out.println("Fejl, kun tal understøttes, prøv igen");
+		}
+		return brutto();
+	}
+	
+	
+	
+
+	
+	
+	
+	
 }

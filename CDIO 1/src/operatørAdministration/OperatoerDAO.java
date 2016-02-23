@@ -35,11 +35,6 @@ public class OperatoerDAO implements IOperatoerDAO {
 		OperatoerDTO opr1 = getOperatoer(opr.getOprID());
 		deleteOperatoer(opr1);
 		d.getMyList().add(opr);
-		
-//		for (int i=0; i<d.getMyList().size(); i++)
-//			if (d.getMyList().get(i).oprID == oprId) {
-//				OperatoerDTO opr = d.getMyList().get(i);
-//			}
 	}
 
 	@Override
