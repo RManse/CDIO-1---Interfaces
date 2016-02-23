@@ -18,77 +18,58 @@ public class Controller {
 		boolean running = true;
 		while (running) {
 			
-			boolean loggetInd = false;
+			boolean loggetIndAdmin = false, loggetIndOperatoer = false;
 			int indexet = indexFraID(b.logIndMenu());
 			int status = d.getMyList().get(indexet).adminStatus;
-			if (d.getMyList().get(indexet).getPassword().equals(autoriser()))
-				loggetInd = true;
-
-//			int menu = 0;	
-			while (loggetInd) 
-			//Menu
+			String logind = autoriser();
+			if (d.getMyList().get(indexet).getPassword().equals(logind) && status == 1)
+				loggetIndAdmin = true;
+			else if (d.getMyList().get(indexet).getPassword().equals(logind) && status == 2)
+				loggetIndOperatoer = true;
 			
-//				if (status == 1)
-//					menu = 1;
-//				else if (status == 2)
-//					menu = 2;
-			
-			switch (b.adminMenu(indexet)) {
-				case 1:
-					if (status == 1 || status == 2)
+				
+			while (loggetIndAdmin) {
+				
+				switch (b.adminMenu(indexet)) {
+					case 1:
 						afvejning();
-					else
-						ingenAdgang();
-					break;
-				case 2:
-					if (status == 1)
-						opretOperator();		
-					else
-						ingenAdgang();
-					break;
-				case 3:
-					if (status == 1)
+						break;
+					case 2:
+						opretOperator();
+						break;
+					case 3:
 						updateOperatoer();
-					else
-						ingenAdgang();
-					break;
-				case 4:
-					if (status == 1)
+						break;
+					case 4:
 						deleteOperatoer();
-					else
-						ingenAdgang();
-					break;
-				case 5:
-					if (status == 1)
+						break;
+					case 5:
 						printAlle();
-					else
-						ingenAdgang();
-					break;
-				case 6:
-					loggetInd = false;
-					indexet = 0;
-					break;
-				default:
-					break;
+						break;
+					case 6:
+						loggetIndAdmin = false;
+						indexet = 0;
+						break;
+					default:
+						break;
+						}
+				}
+			
+			while (loggetIndOperatoer) {
+				switch (b.operatorMenu(indexet)) {
+					case 1:
+						afvejning();
+						break;
+					case 2:
+						loggetIndOperatoer = false;
+						indexet = 0;
+						break;
+					default:
+						break;
+						}
+				}
 			}
-
-//				switch (b.adminMenu(indexet)) {
-//				case 1:
-//					afvejning();
-//					break;
-//				case 2:
-//					loggetInd = false;
-//					indexet = 0;
-//					break;
-//				default:
-//					break;
-//			}
-	
-						
-		
-			}
-		
-	}
+		}
 	
 	public int indexFraID(int oprId) throws DALException {
 		for (int i=0; i<d.getMyList().size(); i++) 
