@@ -3,7 +3,7 @@ package operatørAdministration;
 public class OperatoerDTO {
 	int    oprID;   	//Operatør ID                     
 	String oprNavn;     //Operatør navn
-	String ini;         //Wat        
+	String ini;         //initialer
 	String cpr;         //Operatør CPR        
 	String password;    //Operatør password, skal autogenereres
 	int	   adminStatus; //1=system admin, 2=operatør

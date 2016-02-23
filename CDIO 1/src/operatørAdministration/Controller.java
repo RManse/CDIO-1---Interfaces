@@ -26,13 +26,15 @@ public class Controller {
 				loggetIndAdmin = true;
 			else if (d.getMyList().get(indexet).getPassword().equals(logind) && status == 2)
 				loggetIndOperatoer = true;
+			else
+				System.out.println("Forkert password, prøv igen\n");
 			
 				
 			while (loggetIndAdmin) {
 				
 				switch (b.adminMenu(indexet)) {
 					case 1:
-						afvejning();
+						afvejning(indexet);
 						break;
 					case 2:
 						opretOperator();
@@ -44,9 +46,12 @@ public class Controller {
 						deleteOperatoer();
 						break;
 					case 5:
-						printAlle();
+						printAlleBrugere();
 						break;
 					case 6:
+						printEnkeltBruger(b.oprID());
+						break;
+					case 7:
 						loggetIndAdmin = false;
 						indexet = 0;
 						break;
@@ -58,7 +63,7 @@ public class Controller {
 			while (loggetIndOperatoer) {
 				switch (b.operatorMenu(indexet)) {
 					case 1:
-						afvejning();
+						afvejning(indexet);
 						break;
 					case 2:
 						loggetIndOperatoer = false;
@@ -89,7 +94,7 @@ public class Controller {
 		String oprNavn = b.oprNavn();
 		String ini = b.ini();
 		String cpr = b.cpr();
-		String password = b.password();
+		String password = b.skiftPassword(oprID);
 		int adminStatus = b.adminStatus();
 		OperatoerDTO opr = new OperatoerDTO(oprID, oprNavn, ini, cpr, password, adminStatus);	
 		o.updateOperatoer(opr);
@@ -102,7 +107,10 @@ public class Controller {
 	
 	public void deleteOperatoer() throws DALException {
 		OperatoerDTO opr = getOperatoer();
-		o.deleteOperatoer(opr);
+		if (opr.getOprID() == 10)	//Hvis brugeren er nr 10 (sysadmin) kan den ikke slettes.
+			System.out.println("Du kan ikke slette brugeren: "+opr.getOprNavn());
+		else
+			o.deleteOperatoer(opr);
 	}
 	
 	public void opretOperator() throws DALException {
@@ -114,20 +122,28 @@ public class Controller {
 		int adminStatus = b.adminStatus();
 		OperatoerDTO opr = new OperatoerDTO(oprID, oprNavn, ini, cpr, password, adminStatus);		
 		o.createOperatoer(opr);
+		System.out.println("Bruger oprettet med autogenereret password: "+password);
 	}
 
 	
-	public void afvejning() throws DALException {
-		System.out.println("");
-		if (d.getMyList().get(indexFraID(b.oprID())).getPassword().equals(autoriser())) {
+	public void afvejning(int indexet) throws DALException {
+		if (d.getMyList().get(indexet).getPassword().equals(autoriser())) {
 			double tara = b.tara();
 			double brutto = b.brutto();
 			double netto = brutto-tara;
 			System.out.println("Nettovægten er: "+netto);
 		}
+		else
+			System.out.println("Forkert password.");
+	}
+
+	public void printEnkeltBruger(int oprID) throws DALException {
+		for (int i=0; i<d.getMyList().size(); i++) 
+			if (d.getMyList().get(i).getOprID() == oprID)
+				System.out.println(o.getOperatoer(oprID));
 	}
 	
-	public void printAlle() throws DALException {
+	public void printAlleBrugere() throws DALException {
 		System.out.println(o.getOperatoerList());
 	}
 	

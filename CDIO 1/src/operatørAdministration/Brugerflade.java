@@ -34,7 +34,8 @@ public class Brugerflade {
 					+ "\n3. Opdater bruger"
 					+ "\n4. Slet bruger"
 					+ "\n5. Print brugerliste"
-					+ "\n6. Log ud");
+					+ "\n6. Print bestemt bruger"
+					+ "\n7. Log ud");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			return a;
@@ -72,7 +73,7 @@ public class Brugerflade {
 	
 	public int nytOprID() throws DALException {
 		try { 
-			System.out.println("Opret ny bruger\n----------\nIndtast ID: ");
+			System.out.println("\nOpret ny bruger\n----------\nIndtast ID: ");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			for (int i=0; i<d.getMyList().size(); i++) 
@@ -106,6 +107,35 @@ public class Brugerflade {
 		System.out.println("Indtast password: ");
 		return skanner.nextLine();
 	}
+
+	public String nuvaerendePassword() {
+		System.out.println("Indtast dit nuværende password: ");
+		return skanner.nextLine();
+	}
+	
+	public String nytPassword() {
+		System.out.println("Indtast nyt password: ");
+		return skanner.nextLine();
+	}
+	
+	public String skiftPassword(int oprID) {
+		String oldPass = nuvaerendePassword();
+		for (int i=0; i<d.getMyList().size(); i++) 
+			if (d.getMyList().get(i).getOprID() == oprID) {
+				if (oldPass.equals(d.getMyList().get(i).getPassword())) {
+					String newPassword = nytPassword();
+					if (newPassword.equals(nytPassword()))
+						return newPassword;
+				}
+				else {
+					System.out.println("Indtastning matcher ikke dit password, prøv igen.");
+					return skiftPassword(oprID);
+				}
+			}
+		System.out.println("De indtastede passwords stemmer ikke overens, prøv igen.");
+		return skiftPassword(oprID);
+	}
+	
 	
 	public int adminStatus() {
 		try {
@@ -126,7 +156,7 @@ public class Brugerflade {
 		try {
 			System.out.println("Indtast tara vægt kg");
 			String s = skanner.nextLine();
-			int a = Integer.parseInt(s);
+			double a = Double.parseDouble(s);
 				return a;
 		} catch (NumberFormatException e) {
 			System.out.println("Fejl, kun tal understøttes, prøv igen");
@@ -138,7 +168,7 @@ public class Brugerflade {
 		try {
 			System.out.println("Indtast brutto vægt kg");
 			String s = skanner.nextLine();
-			int a = Integer.parseInt(s);
+			double a = Double.parseDouble(s);
 				return a;
 		} catch (NumberFormatException e) {
 			System.out.println("Fejl, kun tal understøttes, prøv igen");
