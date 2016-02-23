@@ -5,11 +5,6 @@ import exception.DALException;
 public class Brugerflade {
 
 	java.util.Scanner skanner = new java.util.Scanner(System.in);
-//	Data d = new Data();
-//	
-//	public Brugerflade(Data d) {
-//		this.d = d;
-//	}
 	
 	Data d;
 	
@@ -19,7 +14,7 @@ public class Brugerflade {
 	
 
 	
-	public int menu() throws DALException {
+	public int logIndMenu() throws DALException {
 		try {
 			System.out.println("Velkommen, indtast dit ID for at logge ind");
 			String s = skanner.nextLine();
@@ -28,14 +23,18 @@ public class Brugerflade {
 		} catch (NumberFormatException e) {
 			System.out.println("Fejl, kun tal understøttes, prøv igen");
 		}
-		return menu();
+		return logIndMenu();
 	}
 	
 	public int adminMenu(int oprIndex) {
 		try {
 			System.out.println("\nVelkommen "+d.getMyList().get(oprIndex).getOprNavn()
-					+ "\n1. Opret operatør,"
-					+ "\n2. Print listen over brugere");
+					+ "\n1. Afvejning"
+					+ "\n2. Opret bruger"
+					+ "\n3. Opdater bruger"
+					+ "\n4. Slet bruger"
+					+ "\n5. Print brugerliste"
+					+ "\n6. Log ud");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			return a;
@@ -45,8 +44,10 @@ public class Brugerflade {
 		return adminMenu(oprIndex);
 	}
 	
-	public int operatorMenu() {
-		System.out.println();
+	public int operatorMenu(int oprIndex) {
+		System.out.println("\nVelkommen "+d.getMyList().get(oprIndex).getOprNavn()
+				+ "\n1. Afvejning"
+				+ "\n2. Log ud");
 		String s = skanner.nextLine();
 		int a = Integer.parseInt(s);
 		return a;
@@ -57,11 +58,33 @@ public class Brugerflade {
 			System.out.println("Indtast ID: ");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
-			return a;
+			for (int i=0; i<d.getMyList().size(); i++) 
+				if (d.getMyList().get(i).getOprID() == a || a < 10 || a > 99){
+					return a;
+				}
+			System.out.println("Bruger ikke fundet, prøv igen");
+			return oprID();
 		} catch (NumberFormatException e) {
 			System.out.println("Fejl, kun tal understøttes, prøv igen");
 		}
 		return oprID();
+	}
+	
+	public int nytOprID() throws DALException {
+		try { 
+			System.out.println("Opret ny bruger\n----------\nIndtast ID: ");
+			String s = skanner.nextLine();
+			int a = Integer.parseInt(s);
+			for (int i=0; i<d.getMyList().size(); i++) 
+				if (d.getMyList().get(i).getOprID() == a || a < 10 || a > 99){
+					System.out.println("Operator ID er allerede i brug, eller opfylder ikke kravene, prøv igen.\nOperator ID skal have et nummer mellem 11 og 99");
+					return nytOprID();
+				}
+			return a;
+		} catch (NumberFormatException e) {
+			System.out.println("Fejl, kun tal understøttes, prøv igen");
+		}
+		return nytOprID();
 	}
 	
 	public String oprNavn() {

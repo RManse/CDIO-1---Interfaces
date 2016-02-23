@@ -19,7 +19,8 @@ public class Controller {
 		while (running) {
 			
 			boolean loggetInd = false;
-			int indexet = indexFraID(b.menu());
+			int indexet = indexFraID(b.logIndMenu());
+			int status = d.getMyList().get(indexet).adminStatus;
 			if (d.getMyList().get(indexet).getPassword().equals(autoriser()))
 				loggetInd = true;
 
@@ -27,44 +28,65 @@ public class Controller {
 			while (loggetInd) 
 			//Menu
 			
-//				if (d.getMyList().get(indexet).adminStatus == 1)
-//					menu = b.adminMenu();
-//				else if (d.getMyList().get(indexet).adminStatus == 2)
-//					menu = b.operatorMenu();
-				
-				
+//				if (status == 1)
+//					menu = 1;
+//				else if (status == 2)
+//					menu = 2;
+			
 			switch (b.adminMenu(indexet)) {
 				case 1:
-					opretOperator();
+					if (status == 1 || status == 2)
+						afvejning();
+					else
+						ingenAdgang();
 					break;
 				case 2:
-					System.out.println(o.getOperatoerList());
+					if (status == 1)
+						opretOperator();		
+					else
+						ingenAdgang();
 					break;
 				case 3:
-					deleteOperatoer();
+					if (status == 1)
+						updateOperatoer();
+					else
+						ingenAdgang();
 					break;
 				case 4:
-					printOperator();
+					if (status == 1)
+						deleteOperatoer();
+					else
+						ingenAdgang();
 					break;
 				case 5:
-					deleteOperatoer();
+					if (status == 1)
+						printAlle();
+					else
+						ingenAdgang();
 					break;
 				case 6:
-					updateOperatoer();
-					break;
-				case 7:
 					loggetInd = false;
-					break;
-				case 8:
-					afvejning();
+					indexet = 0;
 					break;
 				default:
 					break;
 			}
-			
-			
 
-		}
+//				switch (b.adminMenu(indexet)) {
+//				case 1:
+//					afvejning();
+//					break;
+//				case 2:
+//					loggetInd = false;
+//					indexet = 0;
+//					break;
+//				default:
+//					break;
+//			}
+	
+						
+		
+			}
 		
 	}
 	
@@ -103,7 +125,7 @@ public class Controller {
 	}
 	
 	public void opretOperator() throws DALException {
-		int oprID = b.oprID();
+		int oprID = b.nytOprID();
 		String oprNavn = b.oprNavn();
 		String ini = b.ini();
 		String cpr = b.cpr();
@@ -112,10 +134,7 @@ public class Controller {
 		OperatoerDTO opr = new OperatoerDTO(oprID, oprNavn, ini, cpr, password, adminStatus);		
 		o.createOperatoer(opr);
 	}
-	
-	public void printOperator() throws DALException {
-		System.out.println(getOperatoer());
-	}
+
 	
 	public void afvejning() throws DALException {
 		System.out.println("");
@@ -127,11 +146,15 @@ public class Controller {
 		}
 	}
 	
+	public void printAlle() throws DALException {
+		System.out.println(o.getOperatoerList());
+	}
 	
-	//afvejning skal tilføjes:
-	//Når der afvejes skal password passende til connected operatør skrives først
-	//Da skal programmet bede om "tara vægt i kg", herefter "brutto i kg", og den udskriver så:
-	//brutto=netto+tara, altså skal vi udskrive netto=brutto-tara
+	public void ingenAdgang() throws DALException {
+		System.out.println("\nDenne bruger har ikke adgang til denne del af programmet");
+	}
+	
+
 	
 	
 }
