@@ -4,7 +4,11 @@ import exception.DALException;
 
 
 public class OperatoerDAO implements IOperatoerDAO {
-	Data d = new Data();
+	Data d;
+	
+	public OperatoerDAO(Data d) {
+		this.d = d;
+	}
 	
 	@Override
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {

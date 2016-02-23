@@ -1,13 +1,16 @@
 package operatørAdministration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import exception.DALException;
 
 public class Controller {
-	
-	OperatoerDAO o = new OperatoerDAO();
+
+	Data d = new Data();
+	OperatoerDAO o = new OperatoerDAO(d);
 	AutoPassword ap = new AutoPassword();
 	Brugerflade b = new Brugerflade();
-	Data d = new Data();
 	
 	public static void main(String args[]) throws DALException {
 		new Controller();
@@ -19,12 +22,12 @@ public class Controller {
 		while (running) {
 			
 			boolean loggetInd = false;
-					
+			
 			if (d.getMyList().get(indexFraID(b.menu())).getPassword().equals(autoriser()))
 				loggetInd = true;
 
 				
-			while (loggetInd)
+			while (loggetInd) 
 			//Menu
 			
 			switch (b.adminMenu()) {

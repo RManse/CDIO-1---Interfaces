@@ -76,7 +76,7 @@ public class Brugerflade {
 	
 	public int adminStatus() {
 		try {
-			System.out.println("Indtast admin status: ");
+			System.out.println("Indtast admin status: \n1. System admin\n2. Operatør");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			return a;
