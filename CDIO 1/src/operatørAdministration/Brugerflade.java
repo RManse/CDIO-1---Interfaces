@@ -56,7 +56,7 @@ public class Brugerflade {
 	
 	public int oprID() throws DALException {
 		try { 
-			System.out.println("Indtast ID: ");
+			System.out.println("\nIndtast ID: ");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			for (int i=0; i<d.getMyList().size(); i++) 
@@ -89,32 +89,38 @@ public class Brugerflade {
 	}
 	
 	public String oprNavn() {
-		System.out.println("Indtast navn: ");
+		System.out.println("\nIndtast navn: ");
 		return skanner.nextLine();
 	}
 	
 	public String ini() {
-		System.out.println("Indtast Initialer: ");
+		System.out.println("\nIndtast Initialer: ");
 		return skanner.nextLine();
 	}
 	
 	public String cpr() {
-		System.out.println("Indtast CPR: ");
-		return skanner.nextLine();
+		System.out.println("\nIndtast CPR-nummer:\nFødselsdato og løbenummer skal være adskilt af bindestreg\nEksempel: 123456-7890\n ");
+		String a = skanner.nextLine();
+		if (a.length() == 11)
+			return a;
+		else {
+			System.out.println("Indtastet CPR-nummer har en forkert længde, prøv igen.");
+			return cpr();
+		}
 	}
 	
 	public String password() {
-		System.out.println("Indtast password: ");
+		System.out.println("\nIndtast password: ");
 		return skanner.nextLine();
 	}
 
 	public String nuvaerendePassword() {
-		System.out.println("Indtast dit nuværende password: ");
+		System.out.println("\nIndtast dit nuværende password: ");
 		return skanner.nextLine();
 	}
 	
 	public String nytPassword() {
-		System.out.println("Indtast nyt password: ");
+		System.out.println("\nIndtast nyt password: ");
 		return skanner.nextLine();
 	}
 	
@@ -139,7 +145,7 @@ public class Brugerflade {
 	
 	public int adminStatus() {
 		try {
-			System.out.println("Indtast admin status: \n1. System admin\n2. Operatør");
+			System.out.println("\nIndtast admin status: \n1. System admin\n2. Operatør");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			if (a == 1 || a == 2)
@@ -154,7 +160,7 @@ public class Brugerflade {
 	
 	public double tara() {
 		try {
-			System.out.println("Indtast tara vægt kg");
+			System.out.println("\nIndtast tara vægt kg");
 			String s = skanner.nextLine();
 			double a = Double.parseDouble(s);
 				return a;
@@ -166,7 +172,7 @@ public class Brugerflade {
 	
 	public double brutto() {
 		try {
-			System.out.println("Indtast brutto vægt kg");
+			System.out.println("\nIndtast brutto vægt kg");
 			String s = skanner.nextLine();
 			double a = Double.parseDouble(s);
 				return a;

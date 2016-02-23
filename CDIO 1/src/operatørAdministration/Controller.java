@@ -43,7 +43,7 @@ public class Controller {
 						updateOperatoer();
 						break;
 					case 4:
-						deleteOperatoer();
+						deleteOperatoer(indexet);
 						break;
 					case 5:
 						printAlleBrugere();
@@ -105,10 +105,12 @@ public class Controller {
 		return o.getOperatoer(oprID);
 	}
 	
-	public void deleteOperatoer() throws DALException {
+	public void deleteOperatoer(int indexet) throws DALException {
 		OperatoerDTO opr = getOperatoer();
-		if (opr.getOprID() == 10)	//Hvis brugeren er nr 10 (sysadmin) kan den ikke slettes.
-			System.out.println("Du kan ikke slette brugeren: "+opr.getOprNavn());
+		if (opr.getOprID() == d.getMyList().get(indexet).oprID)
+			System.out.println("Du kan ikke slette en bruger i brug.");
+		else if (opr.getOprID() == 10)
+			System.out.println("Du kan ikke slette sysadmin");
 		else
 			o.deleteOperatoer(opr);
 	}

@@ -20,7 +20,7 @@ public class OperatoerDTO {
 	}
 	
 	public String toString() {
-		String s = "Brugernavn: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Initialer: "+ini+", Password: "+password+", admin status: "+adminStatus+"   \n";
+		String s = "ID: "+oprID+", Navn: "+oprNavn+", CPR: "+cpr+", Initialer: "+ini+", Password: "+password+", admin status: "+adminStatus+"   \n";
 		return s;
 	}
 
