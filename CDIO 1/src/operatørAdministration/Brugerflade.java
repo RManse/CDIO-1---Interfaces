@@ -99,7 +99,7 @@ public class Brugerflade {
 	}
 	
 	public String cpr() {
-		System.out.println("\nIndtast CPR-nummer:\nFødselsdato og løbenummer skal være adskilt af bindestreg\nEksempel: 123456-7890\n ");
+		System.out.println("\nIndtast CPR-nummer:\nFødselsdato og løbenummer skal være adskilt af bindestreg\nEksempel: 123456-7890");
 		String a = skanner.nextLine();
 		if (a.length() == 11)
 			return a;
