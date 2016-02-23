@@ -33,9 +33,9 @@ public class Brugerflade {
 	
 	public int adminMenu(int oprIndex) {
 		try {
-			System.out.println("\nVelkommen "+d.getMyList().get(oprIndex).getOprNavn()+","
-					+ "\ntryk 1 for at oprette operatør,"
-					+ "2 for at printe listen");
+			System.out.println("\nVelkommen "+d.getMyList().get(oprIndex).getOprNavn()
+					+ "\n1. Opret operatør,"
+					+ "\n2. Print listen over brugere");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			return a;
