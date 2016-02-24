@@ -9,6 +9,10 @@ public class Data
 		public Data() {
 			myList = new ArrayList<OperatoerDTO>();
 			myList.add(new OperatoerDTO(10, "sysadmin", "sysadm", "111111-1111", "Abc02324", 1));
+			for (int i=11; i<100; i++)
+				myList.add(new OperatoerDTO(i, "testperson", "testperson", "111111-1111", "10", 1));
+			
+			
 		}
 
 		public List<OperatoerDTO> getMyList() {

@@ -73,6 +73,10 @@ public class Brugerflade {
 	
 	public int nytOprID() throws DALException {
 		try { 
+			if (d.getMyList().size() == 90) {
+				System.out.println("Grænsen for brugere er nået, det er ikke muligt at oprette flere brugere på nuværende tidspunkt");
+				return 0;
+			}
 			System.out.println("\nOpret ny bruger\n----------\nIndtast ID: ");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);

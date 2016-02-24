@@ -117,14 +117,16 @@ public class Controller {
 	
 	public void opretOperator() throws DALException {
 		int oprID = b.nytOprID();
-		String oprNavn = b.oprNavn();
-		String ini = b.ini();
-		String cpr = b.cpr();
-		String password = ap.newPassword();
-		int adminStatus = b.adminStatus();
-		OperatoerDTO opr = new OperatoerDTO(oprID, oprNavn, ini, cpr, password, adminStatus);		
-		o.createOperatoer(opr);
-		System.out.println("Bruger oprettet med autogenereret password: "+password);
+		if (oprID != 0) {
+			String oprNavn = b.oprNavn();
+			String ini = b.ini();
+			String cpr = b.cpr();
+			String password = ap.newPassword();
+			int adminStatus = b.adminStatus();
+			OperatoerDTO opr = new OperatoerDTO(oprID, oprNavn, ini, cpr, password, adminStatus);		
+			o.createOperatoer(opr);
+			System.out.println("Bruger oprettet med autogenereret password: "+password);
+		}
 	}
 
 	
