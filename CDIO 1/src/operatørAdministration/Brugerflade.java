@@ -149,13 +149,15 @@ public class Brugerflade {
 	
 	public int adminStatus() {
 		try {
-			System.out.println("\nIndtast admin status: \n1. System admin\n2. Operatør");
+			System.out.println("\nIndtast brugerens status: \n1. System admin\n2. Operatør");
 			String s = skanner.nextLine();
 			int a = Integer.parseInt(s);
 			if (a == 1 || a == 2)
 				return a;
-			else
+			else {
+				System.out.println("Denne status er ikke tilgængelig på nuværende tidspunkt");
 				return adminStatus();
+			}
 		} catch (NumberFormatException e) {
 			System.out.println("Fejl, kun tal understøttes, prøv igen");
 		}
