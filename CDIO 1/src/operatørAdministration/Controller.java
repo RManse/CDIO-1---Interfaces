@@ -5,7 +5,7 @@ import exception.DALException;
 public class Controller {
 
 	Data d = new Data();
-	IOperatoerDAO o = new OperatoerDAO(d);
+	OperatoerDAO o = new OperatoerDAO(d);
 	AutoPassword ap = new AutoPassword();
 	Brugerflade b = new Brugerflade(d);
 	
@@ -151,7 +151,10 @@ public class Controller {
 		System.out.println(o.getOperatoerList());
 	}
 	
-
+	public void ingenAdgang() throws DALException {
+		System.out.println("\nDenne bruger har ikke adgang til denne del af programmet");
+	}
+	
 
 	
 	
