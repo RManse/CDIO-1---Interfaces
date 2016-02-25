@@ -1,5 +1,4 @@
 package operatørAdministration;
-
 import exception.DALException;
 
 public class Controller {
