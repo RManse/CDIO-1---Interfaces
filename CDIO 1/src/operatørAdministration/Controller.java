@@ -40,7 +40,7 @@ public class Controller {
 						opretOperator();
 						break;
 					case 3:
-						updateOperatoer();
+						updateOperatoer(indexet);
 						break;
 					case 4:
 						deleteOperatoer(indexet);
@@ -89,13 +89,35 @@ public class Controller {
 		return b.password();
 	}
 	
-	public void updateOperatoer() throws DALException {
+	public int hentAdminStatus(int indexet, OperatoerDTO opr) throws DALException {
+		int adminStatus = b.adminStatus();
+		
+		//Den skal sammenligne oprID for brugeren vi er ved og ændre, og den der er logget ind
+		//Hvis de er ens, skal man ikke kunne ændre status
+		
+		if (opr.getOprID() == d.getMyList().get(indexet).getOprID()) {
+			System.out.println("Du kan ikke ændre statussen for en bruger der er logget ind");
+			return hentAdminStatus(indexet, opr);
+		}
+		else  {
+			return adminStatus;
+		}
+		
+	}
+	
+	public void updateOperatoer(int indexet) throws DALException {
 		int oprID = b.oprID();
 		String oprNavn = b.oprNavn();
 		String ini = b.ini();
 		String cpr = b.cpr();
 		String password = b.skiftPassword(oprID);
-		int adminStatus = b.adminStatus();
+		int adminStatus;
+		if (oprID == d.getMyList().get(indexet).oprID) {
+			adminStatus = d.getMyList().get(indexet).getAdminStatus();
+		}
+		else {
+			adminStatus = b.adminStatus(); 
+		}
 		OperatoerDTO opr = new OperatoerDTO(oprID, oprNavn, ini, cpr, password, adminStatus);	
 		o.updateOperatoer(opr);
 	}
@@ -134,11 +156,14 @@ public class Controller {
 		if (d.getMyList().get(indexet).getPassword().equals(autoriser())) {
 			double tara = b.tara();
 			double brutto = b.brutto();
-			double netto = brutto-tara;
-			System.out.println("Nettovægten er: "+netto);
+			System.out.println("Nettovægten er: "+beregnNetto(tara, brutto));
 		}
 		else
 			System.out.println("Forkert password.");
+	}
+	
+	public double beregnNetto(double tara, double brutto) throws DALException {
+		return brutto-tara;
 	}
 
 	public void printEnkeltBruger(int oprID) throws DALException {
