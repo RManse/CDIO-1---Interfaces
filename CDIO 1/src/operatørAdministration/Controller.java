@@ -12,6 +12,7 @@ public class Controller {
 		new Controller();
 	}
 	
+	
 	public Controller() throws DALException {
 		
 		boolean running = true;
@@ -179,6 +180,7 @@ public class Controller {
 		System.out.println("\nDenne bruger har ikke adgang til denne del af programmet");
 	}
 	
+	public Controller(int a) {} //Til JUnit test
 
 	
 	
